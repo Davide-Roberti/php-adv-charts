@@ -15,9 +15,9 @@
 
         <?php include 'database.php'; ?>;
 
-        <script>
+        <!-- <script>
 
-            var data = <?php echo json_encode($data); ?>;
+            var data = <?php /* echo json_encode($data); */ ?>;
             var ctx = $('#grafico-linea');
             var chart = new Chart(ctx, {
                 type: 'line',
@@ -32,8 +32,8 @@
                     }]
                 }
             });
-        </script>
+        </script> -->
 
-        <!-- <script src="js/main.js" charset="utf-8"></script> -->
+        <script src="js/main.js" charset="utf-8"></script>
     </body>
 </html>
