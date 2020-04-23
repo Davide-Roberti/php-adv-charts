@@ -13,6 +13,14 @@
             <canvas id="grafico-linea"></canvas>
         </div>
 
+        <div class="container">
+            <canvas id="secondo-grafico-linea"></canvas>
+        </div>
+
+        <div class="container">
+            <canvas id="grafico-torta"></canvas>
+        </div>
+
         <?php include 'database.php'; ?>;
 
         <!-- <script>
