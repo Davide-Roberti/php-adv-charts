@@ -32,12 +32,12 @@
 
             <?php if ($level == 'guest' || $level == 'employee' || $level == 'clevel') { ?>
                 <div class="container">
-                    <canvas id="secondo-grafico-linea"></canvas>
+                    <canvas id="terzo-grafico-linea"></canvas>
                 </div>
             <?php } ?>
             <?php if ($level == 'employee' || $level == 'clevel') { ?>
                 <div class="container">
-                    <canvas id="grafico-torta"></canvas>
+                    <canvas id="secondo-grafico-torta"></canvas>
                 </div>
             <?php } ?>
             <?php if ($level == 'clevel') { ?>
@@ -69,6 +69,6 @@
             });
         </script> -->
 
-        <script src="js/script.js" charset="utf-8"></script>
+        <script src="js/main.js" charset="utf-8"></script>
     </body>
 </html>

@@ -48,8 +48,8 @@ $.ajax({
     url: 'server2.php',
     method: 'GET',
     success: function (data) {
-        graficoLinea(data);
-        graficoTorta(data);
+        graficoLinea('#secondo-grafico-linea', data);
+        graficoTorta('#grafico-torta', data);
 
     },
     error: function () {
@@ -57,9 +57,32 @@ $.ajax({
     }
 });
 
+//milestone 3
 
-function graficoLinea (dataInput) {
-    var ctx = $('#secondo-grafico-linea');
+$.ajax({
+    url: 'server3.php',
+    method: 'GET',
+    success: function (data) {
+        graficoLinea('#terzo-grafico-linea', data)
+        graficoTorta('#secondo-grafico-torta', data)
+        var objectEff = data.team_efficiency.data;
+        var team = [];
+        var efficenza = [];
+        for (var key in objectEff) {
+            team.push(key);
+            efficenza.push(objectEff[key]);
+        }
+        graficoTeam(team[0], team[1], team[2], efficenza[0], efficenza[1], efficenza[2]);
+    },
+    error: function () {
+        alert('errorissimo')
+    }
+});
+
+//funzioni
+
+function graficoLinea (selettore, dataInput) {
+    var ctx = $(selettore);
     var chart = new Chart(ctx, {
         type: 'line',
         data: {
@@ -75,14 +98,14 @@ function graficoLinea (dataInput) {
     });
 }
 
-function graficoTorta (dataInput) {
+function graficoTorta (selettore, dataInput) {
 
     var nomiVenditori = Object.keys(dataInput.fatturato_by_agent.data);
     var datiVenditori = Object.values(dataInput.fatturato_by_agent.data);
     // console.log(nomiVenditori);
     // console.log(datiVenditori);
 
-    var ctx = $('#grafico-torta');
+    var ctx = $(selettore);
     new Chart(ctx, {
         type: "pie",
         data: {
@@ -95,28 +118,7 @@ function graficoTorta (dataInput) {
     });
 }
 
-//milestone 3
 
-$.ajax({
-    url: 'server3.php',
-    method: 'GET',
-    success: function (data) {
-        graficoLinea(data);
-        graficoTorta(data);
-
-        var objectEff = data.team_efficiency.data;
-        var team = [];
-        var efficenza = [];
-        for (var key in objectEff) {
-            team.push(key);
-            efficenza.push(objectEff[key]);
-        }
-        graficoTeam(team[0], team[1], team[2], efficenza[0], efficenza[1], efficenza[2]);
-    },
-    error: function () {
-        alert('errorissimo')
-    }
-});
 
 function graficoTeam (label1, label2, label3, efficenza1, efficenza2, efficenza3) {
     var ctx = $('#grafico-multilinea');
